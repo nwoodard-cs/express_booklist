@@ -7,3 +7,5 @@ In package.json versioning
     ^ means auto update
     ~ means minor updates only
     nothing means no updates
+
+You can highlight a name, and then use ctrl + F2 and alter every instance of a name

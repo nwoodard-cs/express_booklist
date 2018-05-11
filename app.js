@@ -6,6 +6,7 @@ const morgan = require('morgan') // Print HTTP requests
 
 const path = require('path')
 
+const port = process.env.PORT || 3000
 const app = express()
 app.use(morgan('tiny')) // Display succint http requrests
 app.use(express.static(path.join(__dirname, '/public/'))) // Tell express where static files are
@@ -19,6 +20,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/index.html'))
 })
 
-app.listen(3000, () => {
-    debug(`Server running on ${chalk.green(3000)}`)
+app.listen(port, () => {
+    debug(`Server running on ${chalk.green(port)}`)
 })
