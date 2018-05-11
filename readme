@@ -1,0 +1,9 @@
+mkdir
+npm init
+npm install --save express
+
+
+In package.json versioning
+    ^ means auto update
+    ~ means minor updates only
+    nothing means no updates
