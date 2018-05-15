@@ -4,9 +4,8 @@ const debug = require('debug')('app') // Advanced debug loggin to terminal
 const morgan = require('morgan') // Print HTTP requests
 const path = require('path')
 
-const port = process.env.PORT || 3000
 const app = express()
-const bookRouter = express.Router()
+const port = process.env.PORT || 3000
 
 app.use(morgan('tiny')) // Display succint http requests
 app.use(express.static(path.join(__dirname, '/public/'))) // Tell express where static files are
@@ -18,14 +17,12 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/popper.js/dist
 app.set('views', './src/views')
 app.set('view engine', 'ejs')
 
-bookRouter.route('/')
-    .get((req, res) => {
-        res.send('Hi books')
-    })
-bookRouter.route('/single')
-    .get((req, res) => {
-        res.send('Hi single book')
-    })
+const nav = [
+    { link: '/books', title: 'Books' },
+    { link: '/authors', title: 'Authors' }
+]
+
+const bookRouter = require('./src/routes/bookRoutes')(nav)
 
 app.use('/books', bookRouter)
 app.get('/', (req, res) => {
